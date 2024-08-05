@@ -1,0 +1,26 @@
+---
+import imgBackground from '../../imgs/20240623_170703 2.png'
+import location from '../../svgs/location_on.svg'
+import vehicle from '../../svgs/Layer_3.svg'
+import descount from '../../svgs/img20.svg'
+---
+
+<section class="w-full h-screen relative bg-cover">
+  <img src={imgBackground.src} class="object-cover w-full h-full" alt="Imagen de fondo con vehículo de Nómades - Patagonia">
+
+  <div class="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-around gap-2  md:flex-row">
+    <div class="w-[320px] h-[320px] md:w-[360px] bg-black/60 p-2 flex flex-col items-center justify-center">
+      <img class="w-20 h-20" src={location.src} alt="imagen de localizacion">
+      <p class="text-center text-white text-3xl font-thin">Sin límites de kilometraje, viajá tranquilo por toda la Argentina y países limítrofes</p>
+    </div>
+    <div class="w-[320px] h-[320px] md:w-[360px] bg-black/60 p-2 flex flex-col justify-center items-center">
+      <img class="w-22 h-20" src={descount.src} alt="imagen de porcentaje de descuento">
+      <p class="text-center text-white text-3xl font-bold">y hasta 6 cuotas sin interés</p>
+      <span class=" text-white text-lg ">*Consultar bases</span>
+    </div>
+    <div class="w-[320px] h-[320px] md:w-[360px] bg-black/60 p-2 flex flex-col items-center justify-center">
+      <img class="w-24 h-20 pb-1" src={vehicle.src} alt="imagen de vehiculo">
+      <p class="text-center text-white text-3xl font-thin">Vehículos completamente equipados para la aventura de cada viajero</p>
+    </div>
+  </div>
+</section>
