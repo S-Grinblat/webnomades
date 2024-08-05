@@ -1,4 +1,4 @@
-# Astro Starter Kit: Basics
+# Astro Web Nómades Patagonia
 
 ```sh
 npm create astro@latest -- --template basics
