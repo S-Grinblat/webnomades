@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   accordionButtons.forEach(button => {
     button.addEventListener('click', function () {
-      const target = document.querySelector(this.getAttribute('data-accordion-target'));
-      const parentAccordion = this.closest('[data-accordion="collapse"]');
+      const target = document.querySelector(this?.getAttribute('data-accordion-target'));
+      const parentAccordion = this?.closest('[data-accordion="collapse"]');
       const openContent = parentAccordion.querySelector('.block');
 
       // Close any open accordion content within the same parent accordion
