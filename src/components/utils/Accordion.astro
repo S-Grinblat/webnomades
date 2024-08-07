@@ -1,0 +1,239 @@
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+  const accordionButtons = document.querySelectorAll('[data-accordion-target]');
+
+  accordionButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      const target = document.querySelector(this.getAttribute('data-accordion-target'));
+      const parentAccordion = this.closest('[data-accordion="collapse"]');
+      const openContent = parentAccordion.querySelector('.block');
+
+      // Close any open accordion content within the same parent accordion
+      if (openContent && openContent !== target) {
+        openContent.classList.add('hidden');
+        openContent.classList.remove('block');
+        const openButton = parentAccordion.querySelector(`[aria-controls="${openContent.id}"]`);
+        if (openButton) {
+          openButton.querySelector('[data-accordion-icon]').classList.remove('rotate-180');
+        }
+      }
+
+      // Toggle the clicked accordion content
+      if (target.classList.contains('hidden')) {
+        target.classList.remove('hidden');
+        target.classList.add('block');
+        this.querySelector('[data-accordion-icon]').classList.add('rotate-180');
+      } else {
+        target.classList.add('hidden');
+        target.classList.remove('block');
+        this.querySelector('[data-accordion-icon]').classList.remove('rotate-180');
+      }
+    });
+  });
+});
+
+</script>
+
+<div id="accordion-nested-parent" data-accordion="collapse">
+  <h2 id="accordion-collapse-heading-1">
+    <button type="button" class="flex items-center justify-evenly w-full p-5 font-medium rtl:text-right text-white border-b gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
+      <span>Desplega y mira las preguntas y respuestas mas fracuentes</span>
+      <svg width="28" height="28" viewBox="0 0 24 24"><path fill="#ffffff" d="M17 13h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+    </button>
+  </h2>
+  <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
+    <div class="p-5 border-b">
+      <div id="accordion-nested-collapse" class="grid grid-cols-1 sm:grid-cols-2 sm:items-center min-w-[320px] h-auto gap-2" data-accordion="collapse">
+        <div>
+          <h2 id="accordion-nested-collapse-heading-1">
+            <button type="button" class="flex items-center justify-between w-full p-5 rounded-t-xl font-medium rtl:text-right text-white border-b gap-3" data-accordion-target="#accordion-nested-collapse-body-1" aria-expanded="false" aria-controls="accordion-nested-collapse-body-1">
+              <span>¿Cómo reservo mi pick up?</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-nested-collapse-body-1" class="hidden" aria-labelledby="accordion-nested-collapse-heading-1">
+            <div class="p-5 border border-gray-200 dark:border-gray-700 ">
+              <p class="text-gray-400">Nos podes contactar a través de Whatsapp o mail.</p>
+              <p class="text-gray-400">El alquiler es de mínimo 3 días, sin límite de kilómetros, la camioneta se entrega con el tanque lleno y la devolución debe ser igual. Tenemos un contrato el cual debe ser firmado por la persona que alquila, adjuntando fotocopia del DNI y licencia de CONDUCIR y como garantía solicitamos una tarjeta de crédito.</p>
+            </div>
+          </div>
+          <h2 id="accordion-nested-collapse-heading-2">
+            <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-white border-b gap-3" data-accordion-target="#accordion-nested-collapse-body-2" aria-expanded="false" aria-controls="accordion-nested-collapse-body-2">
+              <span>¿Cuál es el modelo de pick up?</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-nested-collapse-body-2" class="hidden" aria-labelledby="accordion-nested-collapse-heading-2">
+            <div class="p-5 border border-gray-200 dark:border-gray-700">
+              <ol>
+                <li>. Año/Modelo 2024</li>
+                <li>. Motor Diesel 4 cilindros 2.0L 140 CV</li>
+                <li>. Caja Manual de 6 velocidades</li>
+                <li>. Llantas de aleación ligera "Korama" de 16"</li>
+                <li>. Faros dobles halógenos</li>
+                <li>. Recubrimiento de suelo de goma</li>
+                <li>. Sensor de estacionamiento trasero</li>
+                <li>. Alza cristales</li>
+                <li>. 5 asientos</li>
+                <li>. Aire acondicionado</li>
+                <li>. Audio con Bluetooth*, USB y entrada auxiliar de audio</li>
+              </ol>
+            </div>
+          </div>
+          <h2 id="accordion-nested-collapse-heading-3">
+            <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-white border-b gap-3" data-accordion-target="#accordion-nested-collapse-body-3" aria-expanded="false" aria-controls="accordion-nested-collapse-body-3">
+              <span>¿Qué licencia de conducir necesito?</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-nested-collapse-body-3" class="hidden" aria-labelledby="accordion-nested-collapse-heading-3">
+            <div class="p-5 border border-gray-200 dark:border-gray-700">
+              <p class="mb-2 text-gray-500 dark:text-gray-400">Ser mayor de edad y una licencia de conducir válida para auto y camioneta.</p>
+            </div>
+          </div>
+          <h2 id="accordion-nested-collapse-heading-4">
+            <button type="button" class="flex items-center justify-between w-full p-5 rounded-t-xl font-medium rtl:text-right text-white border-b gap-3" data-accordion-target="#accordion-nested-collapse-body-4" aria-expanded="false" aria-controls="accordion-nested-collapse-body-4">
+              <span>¿Qué equipamiento tiene la camioneta?</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-nested-collapse-body-4" class="hidden" aria-labelledby="accordion-nested-collapse-heading-4">
+            <div class="p-5 border border-gray-200 dark:border-gray-700">
+              <ol>
+                <li>. Jaula Antivuelco</li>
+                <li>. Tapa rígida de caja</li>
+                <li>. Cobertor</li>
+                <li>. Estribos</li>
+                <li>. Carpa de techo</li>
+                <li>. Planchas de desatasco</li>
+                <li>. Cadenas para nieve</li>
+                <li>. Botiquín de primeros auxilios</li>
+                <li>. Kit de seguridad</li>
+                <li>. Alfombras termoformadas</li>
+                <li>. Equipo de Mate y accesorios de cortesía. Se puede solicitar el alquiler del vehículo sin accesorios.</li>
+              </ol>
+            </div>
+          </div>
+          <h2 id="accordion-nested-collapse-heading-5">
+            <button type="button" class="flex items-center justify-between w-full p-5 rounded-t-xl font-medium rtl:text-right text-white border-b gap-3" data-accordion-target="#accordion-nested-collapse-body-5" aria-expanded="false" aria-controls="accordion-nested-collapse-body-5">
+              <span>Infracciones de tránsito</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-nested-collapse-body-5" class="hidden" aria-labelledby="accordion-nested-collapse-heading-5">
+            <div class="p-5 border border-gray-200 dark:border-gray-700">
+              <p class="text-gray-500 dark:text-gray-400">En el caso de infracción será cargado el gasto al cliente, una vez computada. En el caso de accidente debe brindarle al afectado los datos del seguro provistos por Nómades. Una vez realizado esto debe notificarnos sobre el incidente.</p>
+            </div>
+          </div>
+          <h2 id="accordion-nested-collapse-heading-6">
+            <button type="button" class="flex items-center justify-between w-full p-5 rounded-t-xl font-medium rtl:text-right text-white border-b gap-3" data-accordion-target="#accordion-nested-collapse-body-6" aria-expanded="false" aria-controls="accordion-nested-collapse-body-6">
+              <span>¿se permite trasladar mascotas?</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-nested-collapse-body-6" class="hidden" aria-labelledby="accordion-nested-collapse-heading-6">
+            <div class="p-5 border border-gray-200 dark:border-gray-700">
+              <p class="text-gray-500 dark:text-gray-400">Si, debe avisar previamente para hacer la colocación de accesorios para el traslado de mascotas.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 id="accordion-nested-collapse-heading-7">
+            <button type="button" class="flex items-center justify-between w-full p-5 rounded-t-xl font-medium rtl:text-right text-white border-b gap-3" data-accordion-target="#accordion-nested-collapse-body-7" aria-expanded="false" aria-controls="accordion-nested-collapse-body-7">
+              <span>¿Por dónde puedo viajar?</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-nested-collapse-body-7" class="hidden" aria-labelledby="accordion-nested-collapse-heading-7">
+            <div class="p-5 border border-gray-200 dark:border-gray-700">
+              <p class="text-gray-500 dark:text-gray-400">Por toda la Argentina y países limítrofes, una vez finalizado el viaje se entrega la camioneta en la base.</p>
+            </div>
+          </div>
+          <h2 id="accordion-nested-collapse-heading-8">
+            <button type="button" class="flex items-center justify-between w-full p-5 rounded-t-xl font-medium rtl:text-right text-white border-b gap-3" data-accordion-target="#accordion-nested-collapse-body-8" aria-expanded="false" aria-controls="accordion-nested-collapse-body-8">
+              <span>¿Qué seguro incluye?</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-nested-collapse-body-8" class="hidden" aria-labelledby="accordion-nested-collapse-heading-8">
+            <div class="p-5 border border-gray-200 dark:border-gray-700">
+              <p class="text-gray-500 dark:text-gray-400">Seguro internacional contra terceros.</p>
+            </div>
+          </div>
+          <h2 id="accordion-nested-collapse-heading-9">
+            <button type="button" class="flex items-center justify-between w-full p-5 rounded-t-xl font-medium rtl:text-right text-white border-b gap-3" data-accordion-target="#accordion-nested-collapse-body-9" aria-expanded="false" aria-controls="accordion-nested-collapse-body-9">
+              <span>¿Dónde se realiza el retiro de la camioneta una vez contratado el servicio?</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-nested-collapse-body-9" class="hidden" aria-labelledby="accordion-nested-collapse-heading-9">
+            <div class="p-5 border border-gray-200 dark:border-gray-700">
+              <p class="text-gray-500 dark:text-gray-400">Disponemos de tres puntos de entrega en la provincia de Neuquén:</p> 
+                <span>General Roca</span>,
+                <span>Cipoletti</span>,
+                <span>Neuquén Capital</span>
+            </div>
+          </div>
+          <h2 id="accordion-nested-collapse-heading-10">
+            <button type="button" class="flex items-center justify-between w-full p-5 rounded-t-xl font-medium rtl:text-right text-white border-b gap-3" data-accordion-target="#accordion-nested-collapse-body-10" aria-expanded="false" aria-controls="accordion-nested-collapse-body-10">
+              <span>¿Puedo viajar con niños pequeños?</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-nested-collapse-body-10" class="hidden" aria-labelledby="accordion-nested-collapse-heading-10">
+            <div class="p-5 border border-gray-200 dark:border-gray-700">
+              <p class="text-gray-500 dark:text-gray-400">Si, debe avisar previamente, para realizar la colocación del asiento para menores.</p> 
+            </div>
+          </div>
+          <h2 id="accordion-nested-collapse-heading-11">
+            <button type="button" class="flex items-center justify-between w-full p-5 rounded-t-xl font-medium rtl:text-right text-white border-b gap-3" data-accordion-target="#accordion-nested-collapse-body-11" aria-expanded="false" aria-controls="accordion-nested-collapse-body-11">
+              <span>¿Puedo remolcar un vehículo externo? Ej. lancha</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-nested-collapse-body-11" class="hidden" aria-labelledby="accordion-nested-collapse-heading-11">
+            <div class="p-5 border border-gray-200 dark:border-gray-700">
+              <p class="text-gray-500 dark:text-gray-400">Si, cuenta con enganche para remolque.</p> 
+            </div>
+          </div>
+          <h2 id="accordion-nested-collapse-heading-12">
+            <button type="button" class="flex items-center justify-between w-full p-5 rounded-t-xl font-medium rtl:text-right text-white border-b gap-3" data-accordion-target="#accordion-nested-collapse-body-12" aria-expanded="false" aria-controls="accordion-nested-collapse-body-12">
+              <span>¿Qué conbustible debo utilizar?</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-nested-collapse-body-12" class="hidden" aria-labelledby="accordion-nested-collapse-heading-12">
+            <div class="p-5 border border-gray-200 dark:border-gray-700">
+              <p class="text-gray-500 dark:text-gray-400">La pick up debe llevar combustible Diésel Infinia, primera recomendación SHELL, segunda AXION. Presentando los Ticks de carga, al momento de la devolución.</p> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
