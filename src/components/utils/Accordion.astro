@@ -5,8 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   accordionButtons.forEach(button => {
     button.addEventListener('click', function () {
-      const target = document.querySelector(this?.getAttribute('data-accordion-target'));
-      const parentAccordion = this?.closest('[data-accordion="collapse"]');
+      const buttonElement = this;
+      const target = document.querySelector(buttonElement.getAttribute('data-accordion-target'));
+      const parentAccordion = buttonElement.closest('[data-accordion="collapse"]');
       const openContent = parentAccordion.querySelector('.block');
 
       // Close any open accordion content within the same parent accordion
@@ -23,15 +24,49 @@ document.addEventListener('DOMContentLoaded', function () {
       if (target.classList.contains('hidden')) {
         target.classList.remove('hidden');
         target.classList.add('block');
-        this.querySelector('[data-accordion-icon]').classList.add('rotate-180');
+        buttonElement.querySelector('[data-accordion-icon]').classList.add('rotate-180');
       } else {
         target.classList.add('hidden');
         target.classList.remove('block');
-        this.querySelector('[data-accordion-icon]').classList.remove('rotate-180');
+        buttonElement.querySelector('[data-accordion-icon]').classList.remove('rotate-180');
       }
     });
   });
 });
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   const accordionButtons = document.querySelectorAll('[data-accordion-target]');
+
+//   accordionButtons.forEach(button => {
+//     button.addEventListener('click', function () {
+//       const target = document.querySelector(this?.getAttribute('data-accordion-target'));
+//       const parentAccordion = this?.closest('[data-accordion="collapse"]');
+//       const openContent = parentAccordion.querySelector('.block');
+
+//       // Close any open accordion content within the same parent accordion
+//       if (openContent && openContent !== target) {
+//         openContent.classList.add('hidden');
+//         openContent.classList.remove('block');
+//         const openButton = parentAccordion.querySelector(`[aria-controls="${openContent.id}"]`);
+//         if (openButton) {
+//           openButton.querySelector('[data-accordion-icon]').classList.remove('rotate-180');
+//         }
+//       }
+
+//       // Toggle the clicked accordion content
+//       if (target.classList.contains('hidden')) {
+//         target.classList.remove('hidden');
+//         target.classList.add('block');
+//         this.querySelector('[data-accordion-icon]').classList.add('rotate-180');
+//       } else {
+//         target.classList.add('hidden');
+//         target.classList.remove('block');
+//         this.querySelector('[data-accordion-icon]').classList.remove('rotate-180');
+//       }
+//     });
+//   });
+// });
 
 </script>
 
